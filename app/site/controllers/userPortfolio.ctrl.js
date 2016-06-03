@@ -27,6 +27,7 @@
 		userPortVm.chartLoaded = false;
 		userPortVm.protfolioTotal = 0;
 		userPortVm.totalBookValue = 0;
+		userPortVm.textToggle1 = false;
 
 		// load the stock data
 			// promise: store the 
@@ -43,6 +44,9 @@
 		.then(function(res){
 			populate(res.data);
 			console.log(res.data);
+			if(res.data.length == 0) {
+				userPortVm.textToggle1 = true;
+			}
 		}, function(err){console.log(err)});
 		function populate(arr) {
 			userPortVm.dataArr = arr;
@@ -54,6 +58,8 @@
 				populateQuandl(arrLen, userPortVm.dataArr);
 			}, 150);
 		}
+
+
 
 
 		// If recieved stock arr's length is 0, hide progress bar

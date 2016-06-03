@@ -2,7 +2,7 @@
     <div class="nav-wrapper container">
     	<a class="brand-logo">CANDLESTICKS</a>
     	<ul id="nav-mobile" class="right hide-on-med-and-down">
-    		<li><a href="">My Profile</a>
+    		
     		<li><a ng-click="ctrl.logout()">Logout</a></li></li>
     	</ul>
     </div>
@@ -14,12 +14,18 @@
 		<h3>Hi {{ctrl.userFirstname}}, here's your daily summary:</h3>
 	</div>
 
+	<div ng-hide="ctrl.textToggle1" class="textToggle1">
 	<div ng-show="(ctrl.showPortfolio == undefined)" class="row preloadBar">
 	<div class="col s8 offset-s2">
 		<div class="progress">
 			<div class="indeterminate"></div>
 		</div>
 	</div>
+	</div>
+	</div>
+
+	<div class="col s8 offset-s2" class="textToggle2" ng-show="ctrl.textToggle1">
+		<p>Oh no! There are no stocks in your portfolio. Please add stocks with the red button.</p>
 	</div>
 
 	<table class="table-fill" ng-show="(ctrl.showPortfolio != undefined)">
